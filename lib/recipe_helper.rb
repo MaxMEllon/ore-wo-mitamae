@@ -1,12 +1,22 @@
+define :include_cookbook, recipe: 'default' do
+  root_dir = File.expand_path('../..', __FILE__)
+  include_recipe File.join(root_dir, 'cookbooks', params[:name], params[:recipe])
+end
+
+define :include_attribute do
+  root_dir = File.expand_path('../..', __FILE__)
+  include_recipe File.join(root_dir, 'attributes', params[:name])
+end
+
 define :git_clone, repository: nil, depth: nil do
   path = params[:name]
   opt = '--depth=%d' % params[:depth] if params[:depth]
   opt ||= ''
   repository = params[:repository]
+  cmd = ['git', 'clone', opt, repository, path].compact.join(' ')
 
-  execute "git clone #{opt} #{repository} #{path}" do
-    command <<-EOF
-      git clone #{opt} #{repository} #{path} #{opt}
-    EOF
+  execute "#{cmd}" do
+    run_command cmd, error: false
+    not_if "test -d #{path}"
   end
 end
