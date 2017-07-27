@@ -4,9 +4,9 @@ define :git_clone, repository: nil, depth: nil do
   opt ||= ''
   repository = params[:repository]
 
-  execute "git clone #{repository} to #{path}" do
+  execute "git clone #{opt} #{repository} #{path}" do
     command <<-EOF
-      git clone #{repository} #{path} #{opt}
+      git clone #{opt} #{repository} #{path} #{opt}
     EOF
   end
 end

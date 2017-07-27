@@ -1,9 +1,11 @@
-git_clone '~/.rbenv' do
+git_clone "/home/#{ENV['USER']}/.rbenv" do
   repository 'https://github.com/rbenv/rbenv.git'
+  depth 1
 end
 
-git_clone '~/.rbenv/plugins/ruby-build' do
+git_clone "/home/#{ENV['USER']}/.rbenv/plugins/ruby-build" do
   repository 'https://github.com/rbenv/ruby-build.git'
+  depth 1
 end
 
 execute 'install ruby 2.4.1' do
