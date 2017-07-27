@@ -4,7 +4,7 @@ execute 'install nodenv' do
   EOF
 
   command <<-EOF
-    got clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
+    git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
   EOF
 
   not_if 'test -d ~/.nodenv'
