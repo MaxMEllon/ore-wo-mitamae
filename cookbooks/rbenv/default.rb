@@ -8,6 +8,17 @@ git_clone "/home/#{ENV['USER']}/.rbenv/plugins/ruby-build" do
   depth 1
 end
 
+execute 'install dependency libraries' do
+  libs = [
+    'libssl-dev',
+    'libreadline-dev',
+    'zlib1g-dev'
+  ].compact.join(' ')
+  command <<-EOF
+    sudo apt-get install -y #{libs}
+  EOF
+end
+
 execute 'install ruby 2.4.1' do
   command <<-EOF
     export PATH="${HOME}/.rbenv/bin:${PATH}"
