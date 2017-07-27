@@ -1,13 +1,9 @@
-execute 'install rbenv' do
-  git '~/.rbenv' do
-    repository 'https://github.com/rbenv/rbenv.git'
-  end
+git_clone '~/.rbenv' do
+  repository 'https://github.com/rbenv/rbenv.git'
+end
 
-  git '~/.rbenv/plugins/ruby-build' do
-    repository 'https://github.com/rbenv/ruby-build.git'
-  end
-
-  not_if 'test -d ~/.rbenv'
+git_clone '~/.rbenv/plugins/ruby-build' do
+  repository 'https://github.com/rbenv/ruby-build.git'
 end
 
 execute 'install ruby 2.4.1' do

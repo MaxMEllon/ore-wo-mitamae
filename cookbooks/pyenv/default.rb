@@ -1,9 +1,5 @@
-execute 'install pyenv' do
-  git '~/.pyenv' do
-    repository 'https://github.com/pyenv/pyenv.git'
-  end
-
-  not_if 'test -d ~/.pyenv'
+git_clone '~/.pyenv' do
+  repository 'https://github.com/pyenv/pyenv.git'
 end
 
 execute 'install pyenv 3.6.1' do
