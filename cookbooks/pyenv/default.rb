@@ -1,11 +1,11 @@
-git_clone "/home/#{ENV['USER']}/.pyenv" do
+git_clone "#{node[:env][:home]}/.pyenv" do
   repository 'https://github.com/pyenv/pyenv.git'
   depth 1
 end
 
 execute 'install pyenv 3.6.1' do
   command <<-EOF
-    export PATH="${HOME}/.pyenv/bin:${PATH}"
+    export PATH="#{node[:env][:node]}/.pyenv/bin:${PATH}"
     eval "$(pyenv init -)"
     pyenv install 3.6.1 -f
     pyenv global 3.6.1
