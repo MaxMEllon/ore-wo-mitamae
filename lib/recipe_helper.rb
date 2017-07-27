@@ -8,12 +8,14 @@ define :include_attribute do
   include_recipe File.join(root_dir, 'attributes', params[:name])
 end
 
-define :git_clone, repository: nil, depth: nil do
+define :git_clone, repository: nil, depth: nil, branch: nil do
   path = params[:name]
   opt = '--depth=%d' % params[:depth] if params[:depth]
   opt ||= ''
+  branch = "-d #{branch}" if params[:banch]
+  branch ||= ''
   repository = params[:repository]
-  cmd = ['git', 'clone', opt, repository, path].compact.join(' ')
+  cmd = ['git', 'clone', opt, branch, repository, path].compact.join(' ')
 
   execute "#{cmd}" do
     run_command cmd, error: false
