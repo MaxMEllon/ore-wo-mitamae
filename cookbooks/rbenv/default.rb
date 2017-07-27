@@ -1,11 +1,21 @@
 execute 'install rbenv' do
-  command <<-EOF
-    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-  EOF
+  git '~/.rbenv' do
+    repository 'https://github.com/rbenv/rbenv.git'
+  end
 
-  command <<-EOF
-    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-  EOF
+  git '~/.rbenv/plugins/ruby-build' do
+    repository 'https://github.com/rbenv/ruby-build.git'
+  end
 
   not_if 'test -d ~/.rbenv'
+end
+
+execute 'install ruby 2.4.1' do
+  command <<-EOF
+    export PATH="~/.rbenv/bin:${PATH}"
+    eval "$(rbenv init -)"
+    rbenv install 2.4.1
+  EOF
+
+  not_if 'which ruby && ruby --version | grep 2.4.1'
 end
