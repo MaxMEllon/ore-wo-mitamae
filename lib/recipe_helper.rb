@@ -8,7 +8,5 @@ define :git_clone, repository: nil, depth: nil do
     command <<-EOF
       git clone #{repository} #{path} #{opt}
     EOF
-
-    not_if "test -d #{path}"
   end
 end

@@ -15,7 +15,7 @@ Vagrant.configure('2') do |c|
   c.vm.provision 'shell', inline: <<-SHELL
     sudo apt-get install -y git
 
-    echo 'git clone https://github.com/MaxMEllon/ore-wo-mitamae.git /home/vagrant/mitamae' > /home/vagrant/install
+    echo 'git clone --depth=1 https://github.com/MaxMEllon/ore-wo-mitamae.git /home/vagrant/mitamae' > /home/vagrant/install
     echo 'cd /home/vagrant/mitamae && bin/setup' >> /home/vagrant/install
     echo 'bin/mitamae local bootstrap.rb' >> /home/vagrant/install
 
