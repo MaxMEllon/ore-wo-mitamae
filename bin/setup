@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# MIT License
+# Copyright (c) 2016 KIMURA Masayuki
+#
+# Permission is hereby granted,  free of charge,  to any person obtaining a copy
+# of this software and associated documentation files (the "Software"),  to deal
+# in the Software without restriction,  including without limitation the rights
+# to use,  copy,  modify,  merge,  publish,  distribute,  sublicense,  and/or sell
+# copies of the Software,  and to permit persons to whom the Software is
+# furnished to do so,  subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS",  WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
+# IMPLIED,  INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,  DAMAGES OR OTHER
+# LIABILITY,  WHETHER IN AN ACTION OF CONTRACT,  TORT OR OTHERWISE,  ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+base_dir=$(cd $(dirname $0); pwd)
+
+mitamae_version=1.4.5
+case $(uname) in
+  Linux)
+    mitamae_bin=mitamae-x86_64-linux
+    mitamae_sha256=29bbf2a0d045dbcda0f346a3f4fa708c788c8072cb0006abbd1e4293f55caed8
+    ;;
+  Darwin)
+    mitamae_bin=mitamae-x86_64-darwin
+    mitamae_sha256=a017d1ce8b6953eb66ba2f8247c2bc9d92112517c2b0f8c61d0a16c15f28d954
+    ;;
+  *)
+    echo "unexpected uname: $(uname)"
+    exit 1
+esac
+
+if ! [ -f "${base_dir}/${mitamae_bin}" ]; then
+  curl -o "${base_dir}/${mitamae_bin}.tar.gz" -fL "https://github.com/itamae-kitchen/mitamae/releases/download/v${mitamae_version}/${mitamae_bin}.tar.gz"
+  sha256=$(/usr/bin/openssl dgst -sha256 ${base_dir}/${mitamae_bin}.tar.gz | cut -d ' ' -f 2)
+  if [ "$mitamae_sha256" != "$sha256" ]; then
+    echo "checksum verification failed!\nexpected: ${mitamae_sha256}\n  actual: ${sha256}"
+    exit 1
+  fi
+  tar xzf "${base_dir}/${mitamae_bin}.tar.gz"
+
+  rm "${base_dir}/${mitamae_bin}.tar.gz"
+  mv "${mitamae_bin}" "${base_dir}"
+  chmod +x "${base_dir}/${mitamae_bin}"
+fi
+ln -sf "${base_dir}/${mitamae_bin}" "${base_dir}/mitamae"
