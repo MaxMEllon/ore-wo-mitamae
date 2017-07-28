@@ -15,5 +15,6 @@ execute 'install node 8.2.1' do
     nodenv install 8.2.1 -f
     nodenv global 8.2.1
   EOF
+  not_if 'which node && node --version | grep v8.2.1'
 end
 
