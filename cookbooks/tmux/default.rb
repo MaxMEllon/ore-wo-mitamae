@@ -7,7 +7,6 @@ end
 execute 'install dependency libraries' do
   libs = [
     'automake',
-    'libvent-dev',
     'libncurses5-dev',
     'xsel'
   ].compact.join(' ')
@@ -26,4 +25,6 @@ execute 'make source code' do
     make -j4
     sudo make install
   EOF
+
+  cwd "#{node[:env][:home]}/local/src/tmux"
 end
