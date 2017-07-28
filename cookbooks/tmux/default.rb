@@ -9,6 +9,8 @@ execute 'install dependency libraries' do
     'automake',
     'libevent-dev',
     'libncurses5-dev',
+    'libtool',
+    'pkg-config',
     'xsel'
   ].compact.join(' ')
 
@@ -23,7 +25,7 @@ end
 
 execute 'make source code' do
   command <<-EOF
-    bash autogen.sh
+    ./autogen.sh
     ./configure
     make -j4
     sudo make install
