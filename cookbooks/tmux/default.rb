@@ -7,6 +7,7 @@ end
 execute 'install dependency libraries' do
   libs = [
     'automake',
+    'libevent-dev',
     'libncurses5-dev',
     'xsel'
   ].compact.join(' ')
