@@ -4,6 +4,6 @@ include_attribute 'common'
 
 include_cookbook 'nodenv'
 include_cookbook 'rbenv'
-include_cookbook 'pyenv'
+include_cookbook 'pyenv' unless ENV['CI']
 include_cookbook 'zsh'
 include_cookbook 'tmux'

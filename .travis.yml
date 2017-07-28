@@ -3,6 +3,9 @@ sudo: true
 os:
   - linux
 
+env:
+  - CI=1
+
 script:
   - bin/setup
   - bin/mitamae local bootstrap.rb
