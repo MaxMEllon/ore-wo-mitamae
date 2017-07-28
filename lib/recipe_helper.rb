@@ -12,13 +12,13 @@ define :git_clone, repository: nil, depth: nil, branch: nil do
   path = params[:name]
   opt = '--depth=%d' % params[:depth] if params[:depth]
   opt ||= ''
-  branch = "-d #{params[:branch]}" if params[:branch]
+  branch = "-b #{params[:branch]}" if params[:branch]
   branch ||= ''
   repository = params[:repository]
   cmd = ['git', 'clone', opt, branch, repository, path].compact.join(' ')
 
   execute "#{cmd}" do
-    run_command cmd, error: false
+    run_command cmd
     not_if "test -d #{path}"
   end
 end

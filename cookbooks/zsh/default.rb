@@ -24,7 +24,6 @@ end
 execute 'make source code' do
   command <<-EOF
     ./Util/preconfig
-
     ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --bindir=/bin \
