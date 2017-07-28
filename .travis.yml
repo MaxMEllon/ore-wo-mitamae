@@ -1,0 +1,8 @@
+language: c
+sudo: true
+os:
+  - linux
+
+script:
+  - bin/setup
+  - bin/mitamae local bootstrap.rb
