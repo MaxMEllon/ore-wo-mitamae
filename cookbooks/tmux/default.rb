@@ -13,6 +13,8 @@ execute 'install dependency libraries' do
   ].compact.join(' ')
 
   command <<-EOF
+    dpkg -l pkg-config
+    ls -l /usr/share/aclocal/pkg.m4
     sudo apt-get install -y #{libs}
   EOF
 
