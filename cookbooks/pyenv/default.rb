@@ -5,7 +5,7 @@ end
 
 execute 'install pyenv 3.6.1' do
   command <<-EOF
-    export PATH="#{node[:env][:node]}/.pyenv/bin:${PATH}"
+    export PATH="#{node[:env][:home]}/.pyenv/bin:${PATH}"
     eval "$(pyenv init -)"
     pyenv install 3.6.1 -f
     pyenv global 3.6.1

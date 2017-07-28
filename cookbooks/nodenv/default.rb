@@ -10,7 +10,7 @@ end
 
 execute 'install node 8.2.1' do
   command <<-EOF
-    export PATH="#{node[:env][:node]}/.nodenv/bin:${PATH}"
+    export PATH="#{node[:env][:home]}/.nodenv/bin:${PATH}"
     eval "$(nodenv init -)"
     nodenv install 8.2.1 -f
     nodenv global 8.2.1
