@@ -1,3 +1,9 @@
+execute 'set locale' do
+  command <<-EOF
+    sudo update-locale LC_ALL=en_US.UTF-8
+  EOF
+end
+
 define :include_cookbook, recipe: 'default' do
   root_dir = File.expand_path('../..', __FILE__)
   include_recipe File.join(root_dir, 'cookbooks', params[:name], params[:recipe])
