@@ -1,0 +1,5 @@
+## Environment
+
+- VAGRANT_MEMORY
+- VAGRANT_CPUS
+- VAGRANT_SSH_PORT
