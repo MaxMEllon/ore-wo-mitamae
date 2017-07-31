@@ -16,6 +16,9 @@ end
 
 execute 'instal glide' do
   command <<-EOF
+    export PATH=#{node[:env][:home]}/.goenv/bin:${PATH}
+    export GOPATH=#{node[:env][:gopath]}
+    eval "$(goenv init -)"
     mkdir -p #{node[:env][:gopath]}/bin
     curl https://glide.sh/get | sh
   EOF

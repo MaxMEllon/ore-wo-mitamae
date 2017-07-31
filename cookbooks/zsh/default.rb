@@ -44,6 +44,7 @@ execute 'make source code' do
 
     make
     sudo make install
+    sudo sh -c "echo '/bin/zsh' >> /etc/shells"
   EOF
 
   cwd "#{node[:env][:home]}/local/src/zsh"
