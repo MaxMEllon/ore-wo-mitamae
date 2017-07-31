@@ -5,3 +5,5 @@ node[:env][:home] = case node[:platform]
                     else
                       File.join('/home', ENV['USER'])
                     end
+
+node[:env][:gopath] = "#{node[:env][:home]}/local/go"
