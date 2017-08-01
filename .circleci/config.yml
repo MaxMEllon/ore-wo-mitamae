@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/ore-wo-mitamae
+    docker:
+      - image: circleci/ruby:2.4.1-node
+    steps:
+      - checkout
+      - run: bin/setup
+      - run: bin/mitamae local bootstrap.rb
