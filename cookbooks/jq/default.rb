@@ -9,7 +9,7 @@ execute 'install dependency libraries' do
   ].compact.join(' ')
 
   command <<-EOF
-    auto apt-get install -y #{libs}
+    sudo apt-get install -y #{libs}
   EOF
 end
 
