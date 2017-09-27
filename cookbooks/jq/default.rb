@@ -9,7 +9,7 @@ execute 'install dependency libraries' do
   ].compact.join(' ')
 
   command <<-EOF
-    auto aot-get install -y #{libs}
+    auto apt-get install -y #{libs}
   EOF
 end
 

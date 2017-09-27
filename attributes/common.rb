@@ -8,3 +8,5 @@ node[:env][:home] = case node[:platform]
                     end
 
 node[:env][:gopath] = "#{node[:env][:home]}/local/go"
+
+node[:env][:node_version] = '8.5.0'

@@ -13,6 +13,7 @@ include_cookbook 'zsh'
 include_cookbook 'tmux'
 include_cookbook 'vim'
 include_cookbook 'jq'
+include_cookbook 'nginx'
 
 # dotfiles
 include_cookbook 'dotfiles'
