@@ -8,13 +8,16 @@ git_clone "#{node[:env][:home]}/.nodenv/plugins/node-build" do
   depth 1
 end
 
-execute 'install node 8.2.1' do
+v = node[:env][:node_version]
+
+execute "install node #{v}" do
   command <<-EOF
     export PATH="#{node[:env][:home]}/.nodenv/bin:${PATH}"
     eval "$(nodenv init -)"
-    nodenv install 8.2.1 -f
-    nodenv global 8.2.1
+    nodenv install #{v} -f
+    nodenv global #{v}
   EOF
-  not_if 'which node && node --version | grep v8.2.1'
+
+  not_if "which node && node --version | grep #{v}"
 end
 
