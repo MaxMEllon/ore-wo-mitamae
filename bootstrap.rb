@@ -7,9 +7,13 @@ include_cookbook 'rbenv'
 include_cookbook 'pyenv'
 include_cookbook 'goenv'
 
+# commands
 include_cookbook 'git'
 include_cookbook 'zsh'
 include_cookbook 'tmux'
 include_cookbook 'vim'
+include_cookbook 'nginx'
+
+# dotfiles
 include_cookbook 'dotfiles'
 include_cookbook 'vimrc'
