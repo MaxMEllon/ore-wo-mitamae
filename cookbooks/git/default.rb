@@ -1,6 +1,6 @@
 git_clone "#{node[:env][:home]}/local/src/git" do
   repository 'https://github.com/git/git.git'
-  branch 'v2.13.3'
+  branch 'v2.14.2'
   depth 1
 end
 
