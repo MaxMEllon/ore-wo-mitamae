@@ -7,4 +7,4 @@ jobs:
     steps:
       - checkout
       - run: bin/setup
-      - run: bin/mitamae local bootstrap.rb
+      - run: bin/mitamae local bootstrap.rb -l debug
