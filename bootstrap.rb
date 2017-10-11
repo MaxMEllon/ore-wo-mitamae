@@ -18,6 +18,9 @@ include_cookbook 'jq'
 include_cookbook 'hw'
 include_cookbook 'fzy'
 include_cookbook 'nginx'
+include_cookbook 'redis'
+include_cookbook 'mysql'
+include_cookbook 'postgresql'
 
 # dotfiles
 include_cookbook 'dotfiles'
