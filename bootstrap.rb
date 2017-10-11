@@ -10,7 +10,7 @@ include_cookbook 'pyenv'
 include_cookbook 'goenv'
 
 # commands
-# include_cookbook 'git'
+include_cookbook 'git'
 include_cookbook 'zsh'
 include_cookbook 'tmux'
 include_cookbook 'vim'

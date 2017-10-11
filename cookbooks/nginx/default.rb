@@ -13,6 +13,6 @@ execute 'install nginx' do
       sudo -E sh -c "echo \"deb-src http://nginx.org/packages/ubuntu/ $VCNAME nginx\" >> \
       /etc/apt/sources.list"
 
-    sudo apt-get install nginx
+    sudo apt-get install -y nginx
   EOF
 end

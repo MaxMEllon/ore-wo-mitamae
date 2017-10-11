@@ -13,6 +13,7 @@ Vagrant.configure('2') do |c|
   end
 
   c.vm.provision 'shell', inline: <<-SHELL
+    sudo apt-get update
     sudo apt-get install -y git
 
     echo 'git clone --depth=1 https://github.com/MaxMEllon/ore-wo-mitamae.git /home/vagrant/mitamae' > /home/vagrant/install

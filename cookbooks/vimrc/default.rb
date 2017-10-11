@@ -5,7 +5,7 @@ end
 
 execute 'deploy to vimrc' do
   command <<-EOF
-    sudo apt-get install wget
+    sudo apt-get install -y wget
     make install
     mkdir -p #{node[:env][:home]}/.vim/autoload
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.vim/autoload/plug.vim

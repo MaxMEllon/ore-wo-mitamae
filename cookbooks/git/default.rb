@@ -16,7 +16,7 @@ execute 'compile source code of git' do
   ].compact.join(' ')
 
   command <<-EOF
-    sudo apt-get install #{libs}
+    sudo apt-get install -y #{libs}
     make configure
     ./configure --prefix=/usr/local --with-curl=/usr/local
     make all doc
