@@ -2,7 +2,6 @@ execute 'install dependency libraries' do
   libs = [
     'subversion',
     'make',
-    'cmake',
     'gcc',
     'python',
     'libtool',
