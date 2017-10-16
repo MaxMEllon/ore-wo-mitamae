@@ -4,6 +4,9 @@ include_attribute 'common'
 
 include_cookbook '_'
 
+include_cookbook 'cmake'
+include_cookbook 'clang'
+
 include_cookbook 'nodenv'
 include_cookbook 'rbenv'
 include_cookbook 'pyenv'
