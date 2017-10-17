@@ -5,7 +5,8 @@ end
 
 execute 'install dependency libraries' do
   libs = [
-    'dh-autoreconf'
+    'dh-autoreconf',
+    'byacc'
   ].compact.join(' ')
 
   command <<-EOF
