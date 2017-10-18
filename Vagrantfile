@@ -18,7 +18,7 @@ Vagrant.configure('2') do |c|
 
     echo 'git clone --depth=1 https://github.com/MaxMEllon/ore-wo-mitamae.git /home/vagrant/mitamae' > /home/vagrant/install
     echo 'cd /home/vagrant/mitamae && bin/setup' >> /home/vagrant/install
-    echo 'bin/mitamae local bootstrap.rb -l debug' >> /home/vagrant/install
+    echo 'bin/mitamae local bootstrap.rb' >> /home/vagrant/install
 
     chown vagrant: /home/vagrant/install
     chmod +x /home/vagrant/install
