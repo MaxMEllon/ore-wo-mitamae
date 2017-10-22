@@ -15,7 +15,7 @@ include_cookbook '_'
 # commands
 include_cookbook 'git'
 include_cookbook 'zsh'
-# include_cookbook 'tmux'
+include_cookbook 'tmux'
 include_cookbook 'vim'
 include_cookbook 'jq'
 # include_cookbook 'hw'
