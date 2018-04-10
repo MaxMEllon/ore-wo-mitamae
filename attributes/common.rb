@@ -9,4 +9,5 @@ node[:env][:home] = case node[:platform]
 
 node[:env][:gopath] = "#{node[:env][:home]}/local/go"
 
-node[:env][:node_version] = '8.5.0'
+node[:env][:node_version] = '8.10.0'
+node[:env][:ruby_version] = '2.5.0'

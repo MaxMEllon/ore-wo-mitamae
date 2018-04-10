@@ -19,12 +19,14 @@ execute 'install dependency libraries' do
   EOF
 end
 
-execute 'install ruby 2.4.1' do
+v = node[:env][:ruby_version]
+
+execute "install ruby #{v}" do
   command <<-EOF
     export PATH="#{node[:env][:home]}/.rbenv/bin:${PATH}"
     eval "$(rbenv init -)"
-    rbenv install 2.4.1 -f
-    rbenv global 2.4.1
+    rbenv install #{v} -f
+    rbenv global #{v}
   EOF
 
   not_if 'which ruby && ruby --version | grep 2.4.1'
